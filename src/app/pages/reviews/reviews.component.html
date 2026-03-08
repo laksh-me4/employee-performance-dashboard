@@ -1,0 +1,25 @@
+<section class="heading">
+  <h2>Performance Reviews</h2>
+  <p>Manage quarterly review status and rating visibility.</p>
+</section>
+
+<section class="card">
+  <div class="review-item" *ngFor="let review of reviews">
+    <div class="left">
+      <h3>{{ employeeName(review.employeeId) }}</h3>
+      <p>{{ review.quarter }} {{ review.year }} | Rating: {{ review.rating }}/5</p>
+      <small>{{ review.managerNotes }}</small>
+    </div>
+
+    <div class="right">
+      <label for="status-{{ review.id }}">Status</label>
+      <select
+        id="status-{{ review.id }}"
+        [ngModel]="review.status"
+        (ngModelChange)="updateStatus(review.id, $event)"
+      >
+        <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+      </select>
+    </div>
+  </div>
+</section>

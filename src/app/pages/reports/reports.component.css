@@ -1,0 +1,50 @@
+.heading h2 {
+  font-size: 1.7rem;
+}
+
+.heading p {
+  margin-top: 0.3rem;
+  color: var(--text-muted);
+}
+
+.card {
+  margin-top: 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+th {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.health {
+  display: inline-flex;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  background: #d7f7e8;
+  color: #007c4e;
+}
+
+.health.warn {
+  background: #ffe0e6;
+  color: #b50a3a;
+}

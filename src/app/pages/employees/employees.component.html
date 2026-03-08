@@ -1,0 +1,66 @@
+<section class="top">
+  <h2>Employees Directory</h2>
+  <p>Search, filter, and add employees to keep workforce data current.</p>
+</section>
+
+<section class="card controls">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input [(ngModel)]="searchTerm"
+           type="text"
+           placeholder="Search by name, role, or email…">
+  </div>
+  <select [(ngModel)]="selectedDepartment">
+    <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+  </select>
+</section>
+
+<section class="layout-grid">
+  <article class="card">
+    <h3>Employee List</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Department</th>
+            <th>Performance</th>
+            <th>Engagement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of filteredEmployees">
+            <td>
+              <strong>{{ employee.name }}</strong>
+              <p>{{ employee.email }}</p>
+            </td>
+            <td>{{ employee.role }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.performanceScore }}%</td>
+            <td>{{ employee.engagement }}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="card form-card">
+    <h3>Add New Employee</h3>
+    <div class="form-grid">
+      <input [(ngModel)]="newEmployee.name" type="text" placeholder="Full name">
+      <input [(ngModel)]="newEmployee.role" type="text" placeholder="Role">
+      <input [(ngModel)]="newEmployee.department" type="text" placeholder="Department">
+      <input [(ngModel)]="newEmployee.email" type="email" placeholder="Email">
+      <label>
+        Performance Score
+        <input [(ngModel)]="newEmployee.performanceScore" type="number" min="0" max="100">
+      </label>
+      <label>
+        Engagement
+        <input [(ngModel)]="newEmployee.engagement" type="number" min="0" max="100">
+      </label>
+      <button type="button" (click)="addEmployee()">Add Employee</button>
+    </div>
+  </article>
+</section>

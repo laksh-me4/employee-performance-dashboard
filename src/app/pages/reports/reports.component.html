@@ -1,0 +1,31 @@
+<section class="heading">
+  <h2>Department Reports</h2>
+  <p>Department-level view of performance and engagement health indicators.</p>
+</section>
+
+<section class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Department</th>
+        <th>Employees</th>
+        <th>Avg Performance</th>
+        <th>Avg Engagement</th>
+        <th>Health</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let summary of summaries">
+        <td>{{ summary.department }}</td>
+        <td>{{ summary.employeeCount }}</td>
+        <td>{{ summary.avgPerformance }}%</td>
+        <td>{{ summary.avgEngagement }}%</td>
+        <td>
+          <span class="health" [class.warn]="summary.avgPerformance < 80 || summary.avgEngagement < 75">
+            {{ summary.avgPerformance < 80 || summary.avgEngagement < 75 ? 'Needs Attention' : 'Healthy' }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

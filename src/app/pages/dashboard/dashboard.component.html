@@ -1,0 +1,62 @@
+<section class="page-header">
+  <p class="tag">Today at a glance</p>
+  <h2>Employee Performance Dashboard</h2>
+  <p>Monitor team efficiency, engagement health, and review progress in one place.</p>
+</section>
+
+<section class="kpi-grid" *ngIf="metrics">
+  <article class="kpi-card">
+    <p>Total Employees</p>
+    <h3>{{ metrics.totalEmployees }}</h3>
+  </article>
+  <article class="kpi-card">
+    <p>Avg Performance</p>
+    <h3>{{ metrics.avgPerformance }}%</h3>
+  </article>
+  <article class="kpi-card">
+    <p>Avg Engagement</p>
+    <h3>{{ metrics.avgEngagement }}%</h3>
+  </article>
+  <article class="kpi-card warning">
+    <p>Pending Reviews</p>
+    <h3>{{ metrics.pendingReviews }}</h3>
+  </article>
+  <article class="kpi-card risk">
+    <p>At-Risk Employees</p>
+    <h3>{{ metrics.atRiskEmployees }}</h3>
+  </article>
+</section>
+
+<section class="split-grid">
+  <article class="card">
+    <div class="card-head">
+      <h3>Top Performers</h3>
+      <p>Highest scoring team members this cycle</p>
+    </div>
+    <div class="top-list">
+      <div class="row" *ngFor="let employee of topPerformers">
+        <div>
+          <h4>{{ employee.name }}</h4>
+          <p>{{ employee.role }} - {{ employee.department }}</p>
+        </div>
+        <strong>{{ employee.performanceScore }}%</strong>
+      </div>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-head">
+      <h3>Performance Distribution</h3>
+      <p>Visual score comparison by employee</p>
+    </div>
+    <div class="bars">
+      <div class="bar-row" *ngFor="let item of performanceDistribution">
+        <span>{{ item.label }}</span>
+        <div class="bar-track">
+          <div class="bar-fill" [style.width.%]="item.value"></div>
+        </div>
+        <span class="score">{{ item.value }}%</span>
+      </div>
+    </div>
+  </article>
+</section>

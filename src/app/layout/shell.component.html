@@ -1,0 +1,63 @@
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-block">
+      <p class="eyebrow">Performance Hub</p>
+      <h1>Workforce Command Center</h1>
+      <p class="subtitle">Track team outcomes, reviews, and strategic goals.</p>
+    </div>
+    <nav class="menu">
+      <a *ngFor="let item of navItems"
+         [routerLink]="item.route"
+         routerLinkActive="active"
+         class="menu-item">
+        <span class="icon">{{ item.icon }}</span>
+        <span>{{ item.label }}</span>
+      </a>
+    </nav>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="cal-icon">📅</span>
+        <span class="topbar-date">{{ todayDate }}</span>
+      </div>
+      <div class="topbar-right">
+        <div class="notif-wrapper">
+          <button class="bell-btn" (click)="toggleNotif()">
+            🔔
+            <span class="badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+          </button>
+          <div class="notif-dropdown" *ngIf="notifOpen">
+            <div class="notif-header">
+              <span class="notif-title">Notifications</span>
+              <button class="mark-all" (click)="markAllRead()">Mark all read</button>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item"
+                   *ngFor="let n of notifications"
+                   [class.unread]="!n.read"
+                   (click)="markRead(n)">
+                <span class="notif-icon">{{ n.icon }}</span>
+                <div class="notif-body">
+                  <p class="notif-msg">{{ n.message }}</p>
+                  <span class="notif-time">{{ n.time }}</span>
+                </div>
+                <span class="notif-dot" *ngIf="!n.read"></span>
+              </div>
+            </div>
+            <div class="notif-empty" *ngIf="notifications.length === 0">
+              No notifications
+            </div>
+          </div>
+        </div>
+        <div class="topbar-divider"></div>
+        <div class="avatar">AD</div>
+      </div>
+    </header>
+
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

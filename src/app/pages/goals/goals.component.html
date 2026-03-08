@@ -1,0 +1,28 @@
+<section class="heading">
+  <h2>Goal Progress Tracker</h2>
+  <p>Update milestone completion and keep every team accountable.</p>
+</section>
+
+<section class="goal-grid">
+  <article class="goal-card" *ngFor="let goal of goals">
+    <p class="priority" [class.high]="goal.priority === 'High'">{{ goal.priority }} Priority</p>
+    <h3>{{ goal.title }}</h3>
+    <p class="meta">Owner: {{ ownerName(goal.employeeId) }}</p>
+    <p class="meta">Due: {{ goal.dueDate | date: 'mediumDate' }}</p>
+
+    <div class="progress-track">
+      <div class="progress-fill" [style.width.%]="goal.progress"></div>
+    </div>
+
+    <div class="control-row">
+      <span>{{ goal.progress }}%</span>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        [ngModel]="goal.progress"
+        (ngModelChange)="updateProgress(goal.id, $event)"
+      >
+    </div>
+  </article>
+</section>
