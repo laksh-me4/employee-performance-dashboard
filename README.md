@@ -49,7 +49,9 @@ git add .
 git commit -m "Initial commit - Employee Performance Management Dashboard"
 ```
 **##👩‍💻Author**
+
 GitHub: @laksh-me4
 
 **##📄License**
+
 This project is built as an academic mini project.
